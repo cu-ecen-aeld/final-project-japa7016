@@ -14,11 +14,11 @@ PV = "1.0+git${SRCPV}"
 # https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
 # We reference the "server" directory here to build from the "server" directory
 # in your assignments repo
-S = "${WORKDIR}/git/server"
+S = "${WORKDIR}/git/"
 
 # TODO: Add the aesdsocket application and any other files you need to install
 # See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
-#FILES:${PN} += "${bindir}/aesdsocket"
+FILES:${PN} += "${bindir}/test.txt"
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
 #TARGET_LDFLAGS += "-pthread -lrt"

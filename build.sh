@@ -9,29 +9,44 @@ git submodule update
 # local.conf won't exist until this step on first execution
 source poky/oe-init-build-env
 
-CONFLINE="MACHINE = \"qemuarm64\""
+CONFLINES=(
+    'MACHINE ??= "raspberrypi4"'
+    'TARGET_ARCH = "arm"'
+    'ENABLE_UART = "1"'
+    'ENABLE_I2C = "1"'
+)
 
-cat conf/local.conf | grep "${CONFLINE}" > /dev/null
-local_conf_info=$?
+for CONFLINE in "${CONFLINES[@]}"; do
+    cat conf/local.conf | grep "${CONFLINE}" > /dev/null
+    local_conf_info=$?
+    
+    if [ $local_conf_info -ne 0 ]; then
+        echo "Append ${CONFLINE} in the local.conf file"
+        echo ${CONFLINE} >> conf/local.conf
+    else
+        echo "${CONFLINE} already exists in the local.conf file"
+    fi
+done
 
-if [ $local_conf_info -ne 0 ];then
-	echo "Append ${CONFLINE} in the local.conf file"
-	echo ${CONFLINE} >> conf/local.conf
+
+BBLAYERS_ADD=(
+    '../meta-raspberrypi'
+    '../meta-openembedded'
+)
+
+for (( i = 0; i < ${#BBLAYERS_ADD[@]}; i++ )); do
+    	layer="${BBLAYERS_ADD[i]}"
+	bitbake-layers show-layers | grep "$(basename "$layer")" > /dev/null
+	layer_info=$?
+
+	if [ $layer_info -ne 0 ];then
+		echo "Adding $layer layer"
+		bitbake-layers add-layer "$layer"
+	else
+		echo "$layer layer already exists"
+	fi
 	
-else
-	echo "${CONFLINE} already exists in the local.conf file"
-fi
-
-
-bitbake-layers show-layers | grep "meta-aesd" > /dev/null
-layer_info=$?
-
-if [ $layer_info -ne 0 ];then
-	echo "Adding meta-aesd layer"
-	bitbake-layers add-layer ../meta-aesd
-else
-	echo "meta-aesd layer already exists"
-fi
+done
 
 set -e
-bitbake core-image-aesd
+bitbake core-image-base
