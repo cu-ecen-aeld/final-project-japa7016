@@ -10,7 +10,7 @@ git submodule update
 source poky/oe-init-build-env
 
 CONFLINES=(
-    'MACHINE = "raspberrypi4-64"'
+    'MACHINE = "raspberrypi4"'
     'TARGET_ARCH = "arm"'
     'ENABLE_UART = "1"'
     'ENABLE_I2C = "1"'
