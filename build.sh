@@ -18,7 +18,6 @@ CONFLINES=(
     'ENABLE_SPI_BUS = "1"'
     'IMAGE_INSTALL:append = "i2c-tools linux-firmware-rpidistro-bcm43430 v4l-utils python3 ntp wpa-supplicant spitools"'
     'KERNEL_MODULE_AUTOLOAD:rpi += "spidev"'
-    'CORE_IMAGE_EXTRA_INSTALL += "spi-config"'
     'DISTRO_FEATURES:append = "wifi"'
     'IMAGE_FEATURES += "ssh-server-openssh"'
     
