@@ -16,9 +16,10 @@ CONFLINES=(
     'ENABLE_I2C = "1"'
     'KERNEL_MODULE_AUTOLOAD:rpi += "i2c-dev i2c-bcm2708"'
     'ENABLE_SPI_BUS = "1"'
-    'IMAGE_INSTALL:append = "i2c-tools linux-firmware-rpidistro-bcm43430 v4l-utils python3 ntp wpa-supplicant spitools"'
+    'IMAGE_INSTALL:append = "i2c-tools linux-firmware-rpidistro-bcm43430 v4l-utils python3 ntp wpa-supplicant spitools ifupdown wireless-regdb-static"'
     'KERNEL_MODULE_AUTOLOAD:rpi += "spidev"'
     'DISTRO_FEATURES:append = "wifi"'
+    'WIRELESS_REGDOM = "US"'
     'IMAGE_FEATURES += "ssh-server-openssh"'
     
 )
@@ -37,6 +38,7 @@ done
 
 
 BBLAYERS_ADD=(
+    '../meta-inkcal'
     '../meta-raspberrypi'
     '../meta-openembedded/meta-oe'
     '../meta-openembedded/meta-python'
