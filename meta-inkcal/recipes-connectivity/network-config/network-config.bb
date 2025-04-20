@@ -13,7 +13,7 @@ INITSCRIPT_NAME = "wifi"
 INITSCRIPT_PARAMS = "defaults S 99"
 
 
-RDEPENDS_${PN} = "ifupdown wpa-supplicant avahi-daemon nss-mdns"
+RDEPENDS_${PN} = "ifupdown wpa-supplicant avahi-daemon"
 
 do_install() {
     install -d ${D}${sysconfdir}/network
