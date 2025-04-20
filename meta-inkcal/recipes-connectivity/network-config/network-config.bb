@@ -15,7 +15,7 @@ INITSCRIPT_PARAMS = "defaults S 99"
 
 RDEPENDS_${PN} = "ifupdown wpa-supplicant avahi-daemon"
 
-do_install:append() {
+do_install() {
     install -d ${D}${sysconfdir}/network
     install -d ${D}${sysconfdir}/init.d
 
