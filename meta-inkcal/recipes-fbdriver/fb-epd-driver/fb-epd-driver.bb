@@ -13,13 +13,8 @@ DEPENDS = "virtual/kernel"
 
 inherit module
 
-<<<<<<< HEAD:meta-inkcal/recipes-fbdriver/fb-epd-driver/fb-epd-driver_1.0.bb
 KERNEL_MODULE_NAME = "fb_epd"
 KERNEL_MODULE_AUTOLOAD = "fb_epd"
 EXTRA_OEMAKE = "-C ${STAGING_KERNEL_DIR} M=${S} KERNEL_VERSION=${KERNEL_VERSION}"
-=======
-KERNEL_MODULE_NAME = "fb-epd"
-KERNEL_MODULE_AUTOLOAD = "fb-epd"
-EXTRA_OEMAKE = "KERNEL_VERSION=${KERNEL_VERSION}"
->>>>>>> 08b52f34e1f9853ff6954161ac37d81ffb0afc32:meta-inkcal/recipes-fbdriver/fb-epd-driver/fb-epd-driver.bb
+
 
