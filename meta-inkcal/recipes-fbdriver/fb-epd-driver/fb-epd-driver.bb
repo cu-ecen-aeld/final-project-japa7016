@@ -13,7 +13,7 @@ DEPENDS = "virtual/kernel"
 
 inherit module
 
-KERNEL_MODULE_NAME = "fb_epd"
-KERNEL_MODULE_AUTOLOAD = "fb_epd"
+KERNEL_MODULE_NAME = "fb-epd"
+KERNEL_MODULE_AUTOLOAD = "fb-epd"
 EXTRA_OEMAKE = "KERNEL_VERSION=${KERNEL_VERSION}"
 
