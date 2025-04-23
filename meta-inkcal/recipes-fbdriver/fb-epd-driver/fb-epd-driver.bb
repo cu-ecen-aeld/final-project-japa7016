@@ -24,3 +24,6 @@ do_install:append() {
     install -d ${D}${sysconfdir}/rcS.d
     install -m 0755 ${WORKDIR}/S98fbped             ${D}${sysconfdir}/rcS.d/S98fbped
 }
+
+INITSCRIPT_NAME = "S98fbped"
+INITSCRIPT_PARAMS = "defaults 98"
