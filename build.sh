@@ -21,8 +21,9 @@ CONFLINES=(
     'DISTRO_FEATURES:append = "wifi"'
     'WIRELESS_REGDOM = "US"'
     'IMAGE_FEATURES += "ssh-server-openssh"'
-    'DISTRO_FEATURES:append = " systemd"'
-    'VIRTUAL-RUNTIME_init_manager = "systemd"'
+    'DISTRO_FEATURES:remove = "systemd"'
+    'DISTRO_FEATURES:append = " sysvinit"'
+    'VIRTUAL-RUNTIME_init_manager = "sysvinit"'
     
 )
 

@@ -1,0 +1,65 @@
+#!/bin/sh
+
+choose_group() {
+    if grep -q '^staff:' /etc/group; then
+        echo "staff"
+    else
+        echo "wheel"
+    fi
+}
+
+load_mod() {
+    local modName="$1"      # e.g. fb_epd
+    local modFile="$2"      # full path to the .ko
+    local foundMajor
+
+    if ! modprobe "$modName" 2>/dev/null; then
+        echo "modprobe $modName failed, trying insmod $modFile"
+        insmod "$modFile" || exit 1
+    fi
+
+    foundMajor=$(awk '$2=="'"$modName"'" {print $1}' /proc/devices)
+    [ -z "$foundMajor" ] && return
+
+    rm -f /dev/"$modName"
+    mknod /dev/"$modName" c "$foundMajor" 0
+    chgrp "$MAIN_GROUP" /dev/"$modName"
+    chmod 664  /dev/"$modName"
+}
+
+unload_mod() {
+    local modName="$1"
+
+    if ! modprobe -r "$modName" 2>/dev/null; then
+        echo "modprobe -r $modName failed, trying rmmod"
+        rmmod "$modName" || exit 1
+    fi
+
+    rm -f /dev/"$modName"
+}
+
+MAIN_GROUP=$(choose_group)
+
+[ $# -eq 1 ] || {
+    echo "Usage: $0 {start|stop}"
+    exit 1
+}
+
+case "$1" in
+    start)
+        echo "Loading fb_epd module..."
+        load_mod fb_epd \
+            "/lib/modules/$(uname -r)/extra/fb_epd.ko"
+        ;;
+    stop)
+        echo "Unloading fb_epd module..."
+        unload_mod fb_epd
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
