@@ -18,10 +18,12 @@ KERNEL_MODULE_NAME = "fb-epd"
 KERNEL_MODULE_AUTOLOAD = "fb-epd"
 EXTRA_OEMAKE = "-C ${STAGING_KERNEL_DIR} M=${S} KERNEL_VERSION=${KERNEL_VERSION}"
 
+
 INITSCRIPT_NAME = "fbepd"
 INITSCRIPT_PARAMS = "defaults S 98"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/fbepd-init ${D}${sysconfdir}/init.d/fbepd
+
 }
