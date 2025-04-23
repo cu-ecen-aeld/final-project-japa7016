@@ -17,4 +17,18 @@ KERNEL_MODULE_NAME = "fb-epd"
 KERNEL_MODULE_AUTOLOAD = "fb-epd"
 EXTRA_OEMAKE = "-C ${STAGING_KERNEL_DIR} M=${S} KERNEL_VERSION=${KERNEL_VERSION}"
 
+<<<<<<< HEAD
+=======
+FILES_${PN} += " \
+     ${sysconfdir} \
+     ${sysconfdir}/rcS.d \
+     ${sysconfdir}/rcS.d/S98fbepd \
+ "
+
+INSANE_SKIP_${PN} += "installed-vs-shipped"
+
+do_install:append() {
+    install -d ${D}${sysconfdir}/rcS.d
+    install -m 0755 ${WORKDIR}/S98fbepd ${D}${sysconfdir}/rcS.d/S98fbepd
+>>>>>>> 8848edc09cbc694c06c52a4f83cd17bee131bed5
 
