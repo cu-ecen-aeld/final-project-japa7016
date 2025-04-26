@@ -26,3 +26,5 @@ do_install:append() {
      install -d ${D}/boot/overlays
      install -m 0644 ${WORKDIR}/epd-overlay.dtbo  ${D}/boot/overlays/epd-overlay.dtbo  
 }  
+
+FILES_${PN} += "/boot/overlays/epd-overlay.dtbo"
