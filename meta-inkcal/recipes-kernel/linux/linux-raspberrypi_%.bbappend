@@ -8,3 +8,6 @@ do_configure:prepend() {
     install -m 0644 ${WORKDIR}/overlays/epd-overlay.dts ${S}/arch/arm/boot/dts/overlays/epd-overlay.dts
 }
 
+do_deploy:append() {
+    install -D -m 0644 ${B}/arch/arm/boot/dts/overlays/epd-overlay.dtbo ${DEPLOYDIR}/overlays/epd-overlay.dtbo
+}
