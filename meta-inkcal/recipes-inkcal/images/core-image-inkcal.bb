@@ -12,6 +12,7 @@ EXTRA_USERS_PARAMS = "usermod -p '${PASSWD}' root;"
 ROOTFS_POSTPROCESS_COMMAND += "override_configs;"
 
 IMAGE_BOOT_FILES:append = " overlays/epd-overlay.dtbo"
+RPI_EXTRA_CONFIG:append = " dtoverlay=epd-overlay\n"
 
 override_configs() {
     install -d ${IMAGE_ROOTFS}/etc

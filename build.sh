@@ -24,6 +24,7 @@ CONFLINES=(
     'DISTRO_FEATURES:remove = "systemd"'
     'DISTRO_FEATURES:append = " sysvinit"'
     'VIRTUAL-RUNTIME_init_manager = "sysvinit"'
+    'RPI_EXTRA_CONFIG:append = " dtoverlay=epd-overlay"'
 )
 
 for CONFLINE in "${CONFLINES[@]}"; do
