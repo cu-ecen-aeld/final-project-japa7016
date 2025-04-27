@@ -17,13 +17,3 @@ KERNEL_MODULE_NAME = "fb-epd"
 KERNEL_MODULE_AUTOLOAD = "fb-epd"
 EXTRA_OEMAKE = "-C ${STAGING_KERNEL_DIR} M=${S} KERNEL_VERSION=${KERNEL_VERSION}"
 
-do_compile:append() {  
-     oe_runmake epddts  
-}
-
-do_install:append() {  
-     install -d ${D}/boot/overlays
-     install -m 0644 ${WORKDIR}/epd-overlay.dtbo  ${D}/boot/overlays/epd-overlay.dtbo  
-}  
-
-FILES_${PN} += "/boot/overlays/epd-overlay.dtbo"
