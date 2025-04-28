@@ -1,28 +1,21 @@
-SUMMARY = "Ink-Cal test display script"
-LICENSE = "MIT"
+SUMMARY = "Ink-Cal e-paper calendar application"
+LICENSE  = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = " \
-    git://github.com/japa7016/ink-cal-application.git;protocol=ssh;branch=main;subdir=ink-cal-application \
-"
-PV = "1.0+git${SRCPV}"
-SRCREV = "d5671c32acd0525f1d5addbf5d5a1a8add50bfe4"
+SRC_URI = "git://github.com/japa7016/ink-cal-application.git;branch=master;protocol=https"
 
+PV      = "1.0+git${SRCPV}"
 
-S = "${WORKDIR}/ink-cal-application/test"
+SRCREV  = "b2788d81b52b8e42060217138f7d5074f38de271"
 
-inherit allarch
+S = "${WORKDIR}/git"
 
+inherit allarch             
 
-RDEPENDS_${PN} = " \
-    python3 \
-    python3-pillow \
-"
+RDEPENDS:${PN} = "python3-core python3-pillow python3-stdlib-modules"
 
 do_install() {
-    install -d ${D}${bindir}
-    install -m 0755 ${S}/test-display.py ${D}${bindir}/test-display.py
+    install -d  ${D}${bindir}
+    install -m 0755 ${S}/UI_temp.py ${D}${bindir}/UI_temp.py
 }
-
-FILES_${PN} += "${bindir}/test-display.py"
 
