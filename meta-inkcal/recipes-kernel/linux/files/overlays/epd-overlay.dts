@@ -10,7 +10,7 @@
             status = "okay";
 
             #address-cells = <1>;
-            #size-cells    = <0>;s
+            #size-cells    = <0>;
 
             epd@0 {
                 compatible         = "waveshare,epd";
