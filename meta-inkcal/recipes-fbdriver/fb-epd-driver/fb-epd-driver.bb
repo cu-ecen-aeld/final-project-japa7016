@@ -5,11 +5,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/japa7016/ink-cal-application.git;protocol=ssh;branch=main"
 
 PV = "1.0+git${SRCPV}"
-<<<<<<< HEAD
-SRCREV = "f76863f3e7baed344bdf6dad4a9c2f64713b338f"
-=======
+
 SRCREV = "bb3a486840bbb9cb070f077e2db4298b2a09d90f"
->>>>>>> 5bdd5ab271116764062a6886687ff4194008f4d9
+
 
 S = "${WORKDIR}/git/inkcal-epaper-driver"
 
