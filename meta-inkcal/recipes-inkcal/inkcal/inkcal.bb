@@ -6,7 +6,7 @@ SRC_URI = " \
     git://github.com/japa7016/ink-cal-application.git;protocol=ssh;branch=main;subdir=ink-cal-application \
 "
 PV = "1.0+git${SRCPV}"
-SRCREV = "bb3a486840bbb9cb070f077e2db4298b2a09d90f"
+SRCREV = "cb79f913a9478e1432f9253f5e2ac23f172e6a31"
 
 
 S = "${WORKDIR}/ink-cal-application/test"
