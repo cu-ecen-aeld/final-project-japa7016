@@ -10,3 +10,6 @@
 [submodule "poky"]
 	path = poky
 	url = git://git.yoctoproject.org/poky
+[submodule "meta-homeassistant"]
+	path = meta-homeassistant
+	url = https://github.com/meta-homeassistant/meta-homeassistant

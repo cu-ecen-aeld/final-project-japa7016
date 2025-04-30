@@ -4,15 +4,12 @@ inherit extrausers
 SUMMARY = "InkCal image: InkCal app + auto‑WiFi on boot"
 LICENSE = "CLOSED"
 
-CORE_IMAGE_EXTRA_INSTALL += "network-config fb-epd-driver inkcal tests"
+CORE_IMAGE_EXTRA_INSTALL += "network-config inkcal tests python3 python3-gpiozero"
 
 PASSWD = "\$5\$2WoxjAdaC2\$l4aj6Is.EWkD72Vt.byhM5qRtF9HcCM/5YpbxpmvNB5"
 EXTRA_USERS_PARAMS = "usermod -p '${PASSWD}' root;"
 
-ROOTFS_POSTPROCESS_COMMAND += "override_configs;"
-
-IMAGE_BOOT_FILES:append = " overlays/epd-overlay.dtbo"
-RPI_EXTRA_CONFIG:append = " dtoverlay=epd-overlay\n"
+ROOTFS_POSTPROCESS_COMMAND += "override_configs"
 
 override_configs() {
     install -d ${IMAGE_ROOTFS}/etc
@@ -20,4 +17,3 @@ override_configs() {
     install -d ${IMAGE_ROOTFS}/etc/network
     cp ${THISDIR}/files/interfaces ${IMAGE_ROOTFS}/etc/network/interfaces
 }
-

@@ -6,7 +6,7 @@ SRC_URI = "git://github.com/japa7016/ink-cal-application.git;protocol=ssh;branch
 
 PV = "1.0+git${SRCPV}"
 
-SRCREV = "9f95a17e13f58f98833954ab36290fac33d23a80"
+SRCREV = "2e223f8bfb13776d2425050382ea7274a00d9f94"
 
 
 S = "${WORKDIR}/git/inkcal-epaper-driver"
