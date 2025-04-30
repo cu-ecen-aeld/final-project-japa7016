@@ -3,11 +3,16 @@
 case "$1" in
   start)
     echo "Starting Ink-Cal calendar..."
-    /usr/bin/UI.py &
+    
+ 
+    sleep 5
+    
+    /usr/sbin/ntpdate -u pool.ntp.org
+    /usr/bin/inkcal.py &
     ;;
   stop)
     echo "Stopping Ink-Cal calendar..."
-    pkill -f "/usr/bin/UI.py"
+    pkill -f "/usr/bin/inkcal.py"
     ;;
   restart|reload)
     $0 stop
